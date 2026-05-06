@@ -12,17 +12,12 @@ Two isolated nodes exchange sensor data over a secure VPN tunnel. Each node runs
 
 ## Topology
 
-┌─────────────────────────┐        WireGuard VPN        ┌─────────────────────────┐
-│      NODE A (10.0.0.1)  │◄───────────────────────────►│      NODE B (10.0.0.2)  │
-│    Climate Control      │       Encrypted Tunnel       │     Hydro Control       │
-│                         │                              │                         │
-│  Sensor: Temperature    │──── home/nodeA/temp ────────►│  Actuator: Temperature  │
-│  Actuator: Humidity     │◄─── home/nodeB/humidity ─────│  Sensor: Humidity       │
-│                         │                              │                         │
-│  MQTT Broker (1883)     │◄──────── MQTT Bridge ───────►│  MQTT Broker (1883)     │
-└─────────────────────────┘                              └─────────────────────────┘
+| | Node A (10.0.0.1) | | Node B (10.0.0.2) |
+|---|---|---|---|
+| Sensor | Temperature | →→→ | Actuator: Temperature |
+| Actuator | Humidity | ←←← | Sensor: Humidity |
 
----
+> Both nodes communicate over an encrypted **WireGuard VPN tunnel** via **MQTT Bridge**.
 
 ## How It Works
 
